@@ -1,10 +1,8 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { PollContext } from '../../Context/context'
-
+import { PollContext } from '../../context/context';
+import {Button} from '@material-ui/core'
 
 const Header =()=>{
-    const navigate = useNavigate();
     const {votes} = useContext(PollContext);
 
     return(
@@ -12,3 +10,4 @@ const Header =()=>{
       Selected-Choices
     </Button>)
 }
+export default Header;

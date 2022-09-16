@@ -1,15 +1,14 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
+import Dish from "../component/dishes/dishes";
 import Login from "../Pages/login";
 function RouterDom() {
   return (
-    <BrowserRouter>
-      <Switch>
+    <Routes>
         <Route exact path="/" component={Login} />
-        <Route exact path="/pollResult" component={} />
-        <Route exact path="/dishes" component={} />
-      </Switch>
-    </BrowserRouter>
+        {/* <Route exact path="/pollResult" component={} /> */}
+        <Route exact path="/dishes" component={Dish} />
+    </Routes>
   );
 }
 export default RouterDom;
