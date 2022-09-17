@@ -17,14 +17,13 @@ const votesReducer = (state, { type, payLoad }) => {
     case "NoRank":
       for (let i in dummy) {
         if (i === payLoad[0]) {
-          i[0] = 'No Rank';
-          i[1] = 'No Rank';
-          i[2] = 'No Rank';
+          i[0] = 'NoRank';
+          i[1] = 'NoRank';
+          i[2] = 'NoRank';
         }
       }
 
       return dummy;
-
     default:
       return state;
   }

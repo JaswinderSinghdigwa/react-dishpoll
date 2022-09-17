@@ -7,8 +7,9 @@
   }
   .recipes{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
+    margin: 50px 17px;
   }
 .recipe{
     border-radius: 10px;
@@ -28,4 +29,21 @@
 .image{
     border-radius: 10px;
     margin:0px 0px 20px 0px;
+}
+.Card{
+    
+    width: 400px;
+    height: auto;
+    margin: 10px;
+    padding: 0;
+
+}
+.dishes-container .list-group-item {
+    cursor: pointer;
+  }
+
+.Header{
+    display: flex;
+    justify-content: space-between;
+    padding: 25px;
 }

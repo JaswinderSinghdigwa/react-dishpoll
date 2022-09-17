@@ -4,7 +4,8 @@ import { PollContext } from "../../context/context";
 
 function Result() {
   const navigate = useHistory();
-  const { votes } = useContext(PollContext);
+  const {votes}  = useContext(PollContext);
+  console.log("votes",votes)
   return (
     <div className="container col-sm-7 col-md-4">
       <table className="table table-dark table-striped mt-5">
@@ -43,15 +44,9 @@ function Result() {
         </button>
         <button
           className="btn btn-sm btn-danger m-2"
-          onClick={() => navigate.push("/login")}
+          onClick={() => navigate.push("/")}
         >
           Logout
-        </button>
-        <button
-          className="btn btn-sm btn-secondary m-2"
-          onClick={() => navigate.push("/main")}
-        >
-          Main Page
         </button>
       </div>
     </div>

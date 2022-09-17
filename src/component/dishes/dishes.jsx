@@ -6,12 +6,13 @@ import Dishlist from './dishlist';
 
 
 const Dish = () => {
-    const {dish} = useContext(PollContext);
-    console.log("dish",dish)
+    const {dish,votes} = useContext(PollContext);
+    console.log("dish",dish,votes)
     return (
         <>
-            <Header />
             <div className='App'>
+            <Header />
+            <div className="dishes-container container">
             <div className="recipes">
                 {dish && dish?.map((dishes, index) => (
                     <Dishlist
@@ -19,6 +20,7 @@ const Dish = () => {
                         key={index}
                     />
                 ))}
+            </div>
             </div>
             </div>
         </>

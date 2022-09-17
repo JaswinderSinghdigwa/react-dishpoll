@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import userList from '../../src/user.json'
 
-export default function Login() {
+const Login = () => {
     const navigate = useHistory();
     const [user, setUser] = useState({
         username: '',
@@ -51,13 +51,15 @@ export default function Login() {
 
 
     return (
-        <div className="container" style={{ paddingTop: "5%" }}>
+        <div style={{ paddingTop: "10%", display: "flex", justifyContent: "center" }}>
             <form
                 onSubmit={e => {
                     submitForm(e)
                 }}
             >
+                <h1 className='intro'>Login Page</h1>
                 <div className="form-group">
+                    <label >UserName</label>
                     <input
                         type="text"
                         className="form-control"
@@ -67,6 +69,7 @@ export default function Login() {
                     />
                 </div>
                 <div className="form-group">
+                    <label >Password</label>
                     <input
                         type="password"
                         className="form-control"
@@ -76,7 +79,7 @@ export default function Login() {
 
                     />
                 </div>
-                <button value="submit" className="btn btn-primary">
+                <button style={{marginTop : '30px'}} value="submit" className="btn btn-primary">
                     Submit
                 </button>
             </form>
@@ -85,3 +88,4 @@ export default function Login() {
     );
 }
 
+export default Login

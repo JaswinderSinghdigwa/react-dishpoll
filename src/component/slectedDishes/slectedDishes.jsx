@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 const SelectedDishes= () => {
   const navigate = useHistory();
   const { votes } = useContext(PollContext);
+  console.log("voting",votes)
   const decsending = votes.reverse();
   console.log(decsending);
   return (
@@ -32,7 +33,7 @@ const SelectedDishes= () => {
       <button
         className="btn btn-warning"
         style={{ width: "140px" }}
-        onClick={() => navigate.push("/main")}
+        onClick={() => navigate.push("/dishes")}
       >
         Go back
       </button>

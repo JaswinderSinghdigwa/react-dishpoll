@@ -1,9 +1,7 @@
-import React, { createContext, useEffect, useReducer} from "react";
+import React, { createContext,useState,useEffect, useReducer} from "react";
 import axios from 'axios'
 import dishesReducer from "../reducer/dishesReducer";
 import votesReducer from "../reducer/votesReducer";
-// import dishesReducer from "../reducer/dishesReducer";
-// import votesReducer from "../reducer/votesReducer";
 
 export const PollContext = createContext();
 
@@ -11,14 +9,12 @@ const getDishes = async () => {
   const res = await axios.get(
         "https://raw.githubusercontent.com/syook/react-dishpoll/main/db.json"
     );
-    console.log("response", res.data);
     return res.data;
 };
 
 const PollProvider = ({ children }) => {
   const [dish, dishDisPatcher] = useReducer(dishesReducer, []);
-  // const [dishes, setDishes] = useState([]);
-
+  const [count, setCount] = useState(0);
   const [votes, voteDisPatcher] = useReducer(votesReducer, []);
 
   useEffect(() => {
@@ -41,7 +37,7 @@ const PollProvider = ({ children }) => {
   }, []);
 
   return (
-    <PollContext.Provider value={{ dish, votes, dishDisPatcher, voteDisPatcher }}>
+    <PollContext.Provider value={{ dish, votes,count,setCount, dishDisPatcher, voteDisPatcher }}>
       {children}
     </PollContext.Provider>
   );

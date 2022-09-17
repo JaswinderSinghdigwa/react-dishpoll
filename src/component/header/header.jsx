@@ -1,18 +1,30 @@
-import React, { useContext } from "react";
+import React, { useContext} from "react";
+import { useHistory } from "react-router-dom";
 import { PollContext } from '../../context/context';
 import {Button} from '@material-ui/core'
 
 const Header =()=>{
-    const {votes} = useContext(PollContext);
+    const history =useHistory();
+    const {votes ,count} = useContext(PollContext);
+    console.log("3333",votes)
+    const handleResult = (e) =>{
+        e.preventDefault()
+        history.push('/pollResult')
+    }
+
+    const handleSelectChoices = (e) =>{
+        e.preventDefault()
+        history.push('/selected-choices')
+    }
     return(
-    <>
-    <Button href="/pollResult" disabled ={votes.length === 0 ? true :false} variant="contained">
+    < div className="Header">
+    <Button href="/" disabled ={count!==3? true :false} variant="contained" onClick={handleResult} >
       Result
     </Button>
-    <Button href="/selected-choices" variant="contained">
+    <Button href="/" variant="contained" onClick={handleSelectChoices}>
       Selected-Choices
     </Button>
-    </>
+    </div>
     )
 }
 export default Header;

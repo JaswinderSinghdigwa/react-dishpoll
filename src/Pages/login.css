@@ -1,0 +1,15 @@
+.form-group {
+    border: 2px solid black;
+    justify-content: space-between;
+}
+
+.formClass {
+    display: flex;
+    justify-content: center;
+}
+
+h1.intro {
+    background: #1abc9c;
+    color: white;
+    font-size: 30px;
+}
