@@ -1,14 +1,17 @@
 import React from "react";
-import {Route, Routes} from "react-router-dom";
+import {Route, Switch } from "react-router-dom";
 import Dish from "../component/dishes/dishes";
+import Result from "../component/result/result";
+import SelectedDishes from "../component/slectedDishes/slectedDishes";
 import Login from "../Pages/login";
 function RouterDom() {
   return (
-    <Routes>
-        <Route exact path="/" component={Login} />
-        {/* <Route exact path="/pollResult" component={} /> */}
-        <Route exact path="/dishes" component={Dish} />
-    </Routes>
+    <Switch>
+      <Route exact path="/pollResult" component={Result} />
+      <Route exact path="/selected-choices" component={SelectedDishes} />
+      <Route path="/dishes" component={Dish} />
+      <Route path="/" component={Login} />
+    </Switch>
   );
 }
 export default RouterDom;

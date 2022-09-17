@@ -5,7 +5,7 @@ import {
   } from "@material-ui/core";
 import { PollContext } from "../../context/context";
 
-const Dishlist = ({name,image,dishes}) => {
+const Dishlist = ({dishes}) => {
     const {setDish ,setVotes} = useContext(PollContext)
     const selection = (e) =>{
         let rank = e.target.textContent;
@@ -31,8 +31,8 @@ const Dishlist = ({name,image,dishes}) => {
         <>
             <Card>
                 <CardContent>
-                    <h1>{name}</h1>
-                    <img className="image" src={image} alt="" />
+                    <h1>{dishes.name}</h1>
+                    <img className="image" src={dishes.image} alt="" />
                 </CardContent>
                 <ul className="list-group" onChange={selection}>
                     <li

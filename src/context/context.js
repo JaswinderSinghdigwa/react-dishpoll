@@ -1,42 +1,50 @@
-import React, { createContext, useEffect, useState } from 'react';
-import dishesReducer from '../component/reducer/dishesReducer';
-import voteReducer from '../component/reducer/votesReducer';
+import React, { createContext, useEffect, useReducer} from "react";
+import axios from 'axios'
+import dishesReducer from "../reducer/dishesReducer";
+import votesReducer from "../reducer/votesReducer";
+// import dishesReducer from "../reducer/dishesReducer";
+// import votesReducer from "../reducer/votesReducer";
 
-const PollContext = createContext();
+export const PollContext = createContext();
 
 const getDishes = async () => {
-    const response = await fetch(
-        `https://raw.githubusercontent.com/syook/react-dishpoll/main/db.json`
+  const res = await axios.get(
+        "https://raw.githubusercontent.com/syook/react-dishpoll/main/db.json"
     );
-    return response.json()
+    console.log("response", res.data);
+    return res.data;
+};
+
+const PollProvider = ({ children }) => {
+  const [dish, dishDisPatcher] = useReducer(dishesReducer, []);
+  // const [dishes, setDishes] = useState([]);
+
+  const [votes, voteDisPatcher] = useReducer(votesReducer, []);
+
+  useEffect(() => {
+    getDishes().then((data) => {
+      const dummy = dish.slice();
+      data.map((item) => {
+        dummy.push({
+          id: item.id,
+          name: item.dishName,
+          description: item.description,
+          noRank: false,
+          rank1: false,
+          rank2: false,
+          rank3: false,
+        });
+      });
+
+      dishDisPatcher({ type: "ADD_DISHES", payLoad: dummy });
+    });
+  }, []);
+
+  return (
+    <PollContext.Provider value={{ dish, votes, dishDisPatcher, voteDisPatcher }}>
+      {children}
+    </PollContext.Provider>
+  );
 }
 
-const PollProvider = (props) => {
-    const [dish, setDish] = useState(dishesReducer,[]);
-    const [votes ,setVotes] = useState(voteReducer,[]);
-    useEffect(()=>{
-        getDishes().then((collection)=>{
-            const dummy = dish.slice();
-            collection.map((item)=>{
-                dummy.push({
-                id:item.id,
-                name:item.PollContextdishName,
-                description:item.description,
-                noRank:false,
-                rank1:false,
-                rank2:false,
-                rank3:false,
-            });
-        });
-        dish({type : "AddDishes" ,payload : dummy})
-        });
-    },[])
-    
-    return (
-        <PollContext.Provider value={{ dish,votes,setDish,setVotes}}>
-            {props.children}
-        </PollContext.Provider>
-    )
-}
-
-export { PollContext, PollProvider }
+export default PollProvider;
