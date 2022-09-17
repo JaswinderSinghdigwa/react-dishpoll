@@ -11,7 +11,7 @@ const dishesReducer = (state, { type, payLoad }) => {
           dish.rank3 = false;
           dish.noRank = false;
         } else {
-            dish.rank1 = false
+          dish.rank1 = false
         }
       }
       return dummy;
@@ -23,7 +23,7 @@ const dishesReducer = (state, { type, payLoad }) => {
           dish.rank3 = false;
           dish.noRank = false;
         } else {
-            dish.rank2 = false
+          dish.rank2 = false
         }
       }
       return dummy;
@@ -35,12 +35,12 @@ const dishesReducer = (state, { type, payLoad }) => {
           dish.rank3 = true;
           dish.noRank = false;
         } else {
-            dish.rank3 = false
+          dish.rank3 = false
         }
       }
       return dummy;
 
-      case "NoRank":
+    case "NoRank":
       for (let dish of dummy) {
         if (dish.id === payLoad) {
           dish.rank1 = false;

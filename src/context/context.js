@@ -14,7 +14,6 @@ const getDishes = async () => {
 
 const PollProvider = ({ children }) => {
   const [dish, dishDisPatcher] = useReducer(dishesReducer, []);
-  const [count, setCount] = useState(0);
   const [votes, voteDisPatcher] = useReducer(votesReducer, []);
 
   useEffect(() => {
@@ -37,7 +36,7 @@ const PollProvider = ({ children }) => {
   }, []);
 
   return (
-    <PollContext.Provider value={{ dish, votes,count,setCount, dishDisPatcher, voteDisPatcher }}>
+    <PollContext.Provider value={{ dish, votes, dishDisPatcher, voteDisPatcher }}>
       {children}
     </PollContext.Provider>
   );

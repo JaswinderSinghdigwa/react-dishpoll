@@ -9,10 +9,9 @@ const Dishlist = ({ dishes }) => {
     const { dishDisPatcher, voteDisPatcher, setCount } = useContext(PollContext)
     const selection = (e) => {
         let rank = e.target.textContent;
-        if (rank == "Rank-1") {
+        if (rank === "Rank-1") {
             voteDisPatcher({ type: "RankOne", payLoad: [dishes.id, dishes.name] });
             dishDisPatcher({ type: "RankOne", payLoad: dishes.id });
-            setCount((preCounter) => preCounter + 1);
 
         }
         else if (rank === "Rank-2") {
@@ -23,12 +22,10 @@ const Dishlist = ({ dishes }) => {
         else if (rank === "Rank-3") {
             voteDisPatcher({ type: "RankThree", payLoad: [dishes.id, dishes.name] });
             dishDisPatcher({ type: "RankThree", payLoad: dishes.id });
-            setCount((preCounter) => preCounter + 1);
         }
         else {
             voteDisPatcher({ type: "NoRank", payLoad: [dishes.id, dishes.name] });
             dishDisPatcher({ type: "NoRank", payLoad: dishes.id });
-            setCount((preCounter) => preCounter - 1);
         }
 
     }
